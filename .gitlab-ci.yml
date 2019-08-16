@@ -23,8 +23,3 @@ job packaging:
   - pip install --user --upgrade twine
   - twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
-deploy:
-  only:
-    refs:
-      - master
-
