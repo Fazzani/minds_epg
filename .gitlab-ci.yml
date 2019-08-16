@@ -21,6 +21,6 @@ job deploy:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
   - pip install --user --upgrade twine
-  - twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+  - python twine upload --repository-url https://test.pypi.org/legacy/ dist/*
   only:
   - master
