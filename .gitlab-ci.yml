@@ -15,7 +15,7 @@ job packaging:
   - pip install -r requirements.txt
   - python setup.py sdist bdist_wheel
 
-job packaging:
+job deploy:
   stage: deploy
   script: 
   - apt-get update -qy
