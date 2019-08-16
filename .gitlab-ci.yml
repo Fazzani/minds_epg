@@ -1,26 +1,11 @@
 stages:
-  - test
-# Register any environment variables you need here.
-variables:
- # These are magic variables. They will be used by Postgres/Docker to do our initial database setup. The keys must be named as follows. You can change the values as you see fit.
- POSTGRES_DB: 'apidb'
- POSTGRES_USER: 'postgres'
- POSTGRES_PASSWORD: 'postgres'
- FLASK_DEBUG: 'false'
- FLASK_APP: 'app.main'
- FLASK_RUN_PORT: '3330'
- FLASK_ENV: 'development'
- 
+  - build
+  - deploy
 
-# These paths will be cached in between test runs. Very useful for reducing the build time.
 cache:
  paths:
  # This took some trial and error to figure out.
   - ~/.cache/pip/
-
-stages:
-  - build
-  - deploy
 
 job packaging:
   stage: build
