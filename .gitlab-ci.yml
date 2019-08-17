@@ -9,6 +9,10 @@ cache:
 
 job packaging:
   stage: build
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 5 minute
   script: 
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
