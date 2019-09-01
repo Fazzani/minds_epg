@@ -1,4 +1,12 @@
+image: "python:3.6"
+
+before_script:
+  - python --version
+  - pip install -r minds_epg/requirements.txt
+
 stages:
+  - lint
+  # - test
   - build
   - deploy
 
@@ -6,6 +14,22 @@ cache:
  paths:
  # This took some trial and error to figure out.
   - ~/.cache/pip/
+
+pylint:
+  stage: lint
+  allow_failure: true
+  script:
+    - pip install pylint --quiet
+    - pylint minds_epg/
+
+test:
+  stage: test
+  script:
+  - apt-get update -qy
+  - apt-get install -y python-dev python-pip
+  - pip install --user --upgrade setuptools wheel
+  - python setup.py sdist bdist_wheel
+  - python -m unittest discover --verbose . "test_*.py"
 
 job packaging:
   stage: build
