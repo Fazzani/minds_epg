@@ -22,14 +22,14 @@ pylint:
     - pip install pylint --quiet
     - pylint minds_epg/
 
-test:
-  stage: test
-  script:
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip
-  - pip install --user --upgrade setuptools wheel
-  - python setup.py sdist bdist_wheel
-  - python -m unittest discover --verbose . "test_*.py"
+# test:
+#   stage: test
+#   script:
+#   - apt-get update -qy
+#   - apt-get install -y python-dev python-pip
+#   - pip install --user --upgrade setuptools wheel
+#   - python setup.py sdist bdist_wheel
+#   - python -m unittest discover --verbose . "test_*.py"
 
 job packaging:
   stage: build
